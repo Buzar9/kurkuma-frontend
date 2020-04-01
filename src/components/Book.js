@@ -87,7 +87,7 @@ export default class Book extends Component {
         })
         .then(response => response.json())
         .then((user) =>  {
-            if(user != null) {
+            if(user) {
                 this.setState({'show':true, 'method':'post'});
                 setTimeout(() => this.setState({'show':false}), 3000);
             } else {
@@ -131,9 +131,17 @@ export default class Book extends Component {
             roles: this.state.roles
         };
 
-        axios.put("http://localhost:8080/users/" + user.userId, user)
-            .then(response => {
-                if(response.data != null) {
+        const headers = new Headers();;
+        headers.append('Content-Type', 'application/json');
+
+        fetch("http://localhost:8080/users/" + user.userId, {
+            method: "PUT",
+            body: JSON.stringify(user),
+            headers
+        })
+            .then(response => response.json())
+            .then((user) => {
+                if(user) {
                     this.setState({'show':true, 'method':'put'});
                     setTimeout(() => this.setState({'show':false}), 3000);
                     setTimeout(() => this.bookList(), 2000);
