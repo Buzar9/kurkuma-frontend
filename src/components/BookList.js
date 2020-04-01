@@ -16,12 +16,24 @@ export default class BookList extends Component {
     }
 
     componentDidMount() {
-        axios.get("http://localhost:8080/users")
-            .then(response => response.data)
+        this.findAllBooks();
+    }
+
+    findAllBooks(){
+        fetch("http://localhost:8080/users")
+            .then(response => response.json())
             .then((data) => {
                 this.setState({users: data})
             });
-    }
+    };
+
+    // findAllBooks(){
+    //     axios.get("http://localhost:8080/users")
+    //         .then(response => response.data)
+    //         .then((data) => {
+    //             this.setState({users: data})
+    //         });
+    // };
 
     deleteUser = (userId) => {
         axios.delete("http://localhost:8080/users/" + userId)
@@ -96,3 +108,4 @@ export default class BookList extends Component {
 
 
 }
+
