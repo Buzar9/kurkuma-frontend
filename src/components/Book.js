@@ -27,16 +27,15 @@ export default class Book extends Component {
     }
 
     findBookById = (userId) => {
-        fetch("http://localhost:8080/users/" + userId)
-            .then((response) => response.json())
-            .then((user) => {
-                if(user) {
+        axios.get("http://localhost:8080/users/" + userId)
+            .then(response => {
+                if(response.data != null) {
                     this.setState({
-                        userId: user.userId,
-                        username: user.username,
-                        password: user.password,
-                        enabled: user.enabled,
-                        roles: user.roles
+                        userId: response.data.userId,
+                        username: response.data.username,
+                        password: response.data.password,
+                        enabled: response.data.enabled,
+                        roles: response.data.roles
                     });
                 }
 
@@ -44,24 +43,6 @@ export default class Book extends Component {
             console.error("Error - " + error);
         });
     };
-
-    // findBookById = (userId) => {
-    //     axios.get("http://localhost:8080/users/" + userId)
-    //         .then(response => {
-    //             if(response.data != null) {
-    //                 this.setState({
-    //                     userId: response.data.userId,
-    //                     username: response.data.username,
-    //                     password: response.data.password,
-    //                     enabled: response.data.enabled,
-    //                     roles: response.data.roles
-    //                 });
-    //             }
-    //
-    //         }).catch((error) => {
-    //         console.error("Error - " + error);
-    //     });
-    // };
 
     resetBook = () => {
         this.setState(() => this.initialState);
@@ -77,48 +58,18 @@ export default class Book extends Component {
             roles: this.state.roles
         };
 
-        const headers = new Headers();
-        headers.append('Content-Type', 'application/json')
+        axios.post("http://localhost:8080/users", user)
+            .then(response => {
+                if(response.data != null) {
+                    this.setState({'show':true, 'method':'post'});
+                    setTimeout(() => this.setState({'show':false}), 3000);
+                } else {
+                    this.setState({'show':false});
+                }
+            });
 
-        fetch("http://localhost:8080/users", {
-            method: 'POST',
-            body: JSON.stringify(user),
-            headers
-        })
-        .then(response => response.json())
-        .then((user) =>  {
-            if(user) {
-                this.setState({'show':true, 'method':'post'});
-                setTimeout(() => this.setState({'show':false}), 3000);
-            } else {
-                this.setState({'show':false});
-            }
-        });
         this.setState(this.initialState);
     };
-
-    // submitBook = event => {
-    //     event.preventDefault();
-    //
-    //     const user = {
-    //         username: this.state.username,
-    //         password: this.state.password,
-    //         enabled: this.state.enabled,
-    //         roles: this.state.roles
-    //     };
-    //
-    //     axios.post("http://localhost:8080/users", user)
-    //         .then(response => {
-    //             if(response.data != null) {
-    //                 this.setState({'show':true, 'method':'post'});
-    //                 setTimeout(() => this.setState({'show':false}), 3000);
-    //             } else {
-    //                 this.setState({'show':false});
-    //             }
-    //         });
-    //
-    //     this.setState(this.initialState);
-    // };
 
     updateBook = event => {
         event.preventDefault();
@@ -131,17 +82,9 @@ export default class Book extends Component {
             roles: this.state.roles
         };
 
-        const headers = new Headers();;
-        headers.append('Content-Type', 'application/json');
-
-        fetch("http://localhost:8080/users/" + user.userId, {
-            method: "PUT",
-            body: JSON.stringify(user),
-            headers
-        })
-            .then(response => response.json())
-            .then((user) => {
-                if(user) {
+        axios.put("http://localhost:8080/users/" + user.userId, user)
+            .then(response => {
+                if(response.data != null) {
                     this.setState({'show':true, 'method':'put'});
                     setTimeout(() => this.setState({'show':false}), 3000);
                     setTimeout(() => this.bookList(), 2000);
@@ -152,31 +95,6 @@ export default class Book extends Component {
 
         this.setState(this.initialState);
     };
-
-    // updateBook = event => {
-    //     event.preventDefault();
-    //
-    //     const user = {
-    //         userId: this.state.userId,
-    //         username: this.state.username,
-    //         password: this.state.password,
-    //         enabled: this.state.enabled,
-    //         roles: this.state.roles
-    //     };
-    //
-    //     axios.put("http://localhost:8080/users/" + user.userId, user)
-    //         .then(response => {
-    //             if(response.data != null) {
-    //                 this.setState({'show':true, 'method':'put'});
-    //                 setTimeout(() => this.setState({'show':false}), 3000);
-    //                 setTimeout(() => this.bookList(), 2000);
-    //             } else {
-    //                 this.setState({'show':false});
-    //             }
-    //         });
-    //
-    //     this.setState(this.initialState);
-    // };
 
     bookChange= event => {
         this.setState({
