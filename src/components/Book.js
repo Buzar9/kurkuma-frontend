@@ -27,22 +27,41 @@ export default class Book extends Component {
     }
 
     findBookById = (userId) => {
-        axios.get("http://localhost:8080/users/" + userId)
-            .then(response => {
-                if(response.data != null) {
+        fetch("http://localhost:8080/users/" + userId)
+            .then((response) => response.json())
+            .then((user) => {
+                if(user) {
                     this.setState({
-                        userId: response.data.userId,
-                        username: response.data.username,
-                        password: response.data.password,
-                        enabled: response.data.enabled,
-                        roles: response.data.roles
+                        userId: user.userId,
+                        username: user.username,
+                        password: user.password,
+                        enabled: user.enabled,
+                        roles: user.roles
                     });
                 }
 
             }).catch((error) => {
             console.error("Error - " + error);
         });
-    }
+    };
+
+    // findBookById = (userId) => {
+    //     axios.get("http://localhost:8080/users/" + userId)
+    //         .then(response => {
+    //             if(response.data != null) {
+    //                 this.setState({
+    //                     userId: response.data.userId,
+    //                     username: response.data.username,
+    //                     password: response.data.password,
+    //                     enabled: response.data.enabled,
+    //                     roles: response.data.roles
+    //                 });
+    //             }
+    //
+    //         }).catch((error) => {
+    //         console.error("Error - " + error);
+    //     });
+    // };
 
     resetBook = () => {
         this.setState(() => this.initialState);
@@ -51,14 +70,14 @@ export default class Book extends Component {
     submitBook = event => {
         event.preventDefault();
 
-        const book = {
+        const user = {
             username: this.state.username,
             password: this.state.password,
             enabled: this.state.enabled,
             roles: this.state.roles
         };
 
-        axios.post("http://localhost:8080/users", book)
+        axios.post("http://localhost:8080/users", user)
             .then(response => {
                 if(response.data != null) {
                     this.setState({'show':true, 'method':'post'});
