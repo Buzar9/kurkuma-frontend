@@ -78,7 +78,7 @@ export default class UsersList extends Component {
                                         {/*<td>{user.password}</td>*/}
                                         <td>{user.roles}</td>
                                         <td>
-                                            <Link to={"userdata/"+user.userId} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faAddressCard}/></Link>
+                                            <Link to={"singledata/"+user.userId} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faAddressCard}/></Link>
                                         </td>
                                         <td>
                                             <ButtonGroup>
