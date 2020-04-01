@@ -16,6 +16,7 @@ export default function NavigationBar() {
                 <Link to={"/add"} className="nav-link">Add Book </Link>
                 <Link to={"/list"} className="nav-link">Book List </Link>
                 <Link to={"/users"} className="nav-link">Users </Link>
+                <Link to={"/listusers"} className="nav-link">List Users </Link>
             </Nav>
         </Navbar>
     );
