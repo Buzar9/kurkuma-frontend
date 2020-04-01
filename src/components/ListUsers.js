@@ -5,6 +5,7 @@ import Table from "react-bootstrap/Table";
 import {Button, Card, InputGroup, FormControl} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faUsers, faStepBackward, faFastBackward, faStepForward, faFastForward} from "@fortawesome/free-solid-svg-icons";
+import MyToast from "./MyToast";
 
 
 export default class ListUsers extends Component {
@@ -23,7 +24,7 @@ export default class ListUsers extends Component {
     }
 
     findAllRandomUsers () {
-        axios.get("https://randomapi.com/api/6de6abfedb24f889e0b5f675edc50deb?fmt=raw&sole")
+        axios.get("http://localhost:8080/users")
             .then(response => response.data)
             .then((data) => {
                 this.setState({users: data});
@@ -92,11 +93,10 @@ export default class ListUsers extends Component {
                         <Table bordered hover striped variant="dark">
                             <thead>
                             <tr>
-                                <td>Name</td>
-                                <td>Email</td>
-                                <td>Address</td>
-                                <td>Created</td>
-                                <td>Balance</td>
+                                <th>Username</th>
+                                <th>Roles</th>
+                                <th>Data</th>
+                                <th>Actions</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -105,13 +105,12 @@ export default class ListUsers extends Component {
                                     <td colSpan="6">No Users Available.</td>
                                 </tr>
                                 :
-                                currentUsers.map((user, index) => (
-                                    <tr key={index}>
-                                        <td>{user.first}{' '}{user.last}</td>
-                                        <td>{user.email}</td>
-                                        <td>{user.address}</td>
-                                        <td>{user.created}</td>
-                                        <td>{user.balance}</td>
+                                currentUsers.map((user) => (
+                                    <tr key={user.userId}>
+                                        <td>{user.username}</td>
+                                        <td>{user.roles}</td>
+                                        <td></td>
+                                        <td></td>
                                     </tr>
                                 ))
                             }

@@ -8,6 +8,8 @@ import Book from "./components/Book";
 import BookList from "./components/BookList";
 import UserList from "./components/UserList";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
+import ListUsers from "./components/ListUsers";
+import UserData from "./components/UserData";
 
 export default function App() {
     const marginTop = {
@@ -30,6 +32,8 @@ export default function App() {
                         <Route path="/edit/:userId" exact component={Book}/>
                         <Route path="/list" exact component={BookList}/>
                         <Route path="/users" exact component={UserList}/>
+                        <Route path="/listusers" exact component={ListUsers}/>
+                        <Route path="/userdata" exact component={UserData}/>
                     </Switch>
                 </Col>
             </Row>
