@@ -50,7 +50,7 @@ export default class UserData extends Component {
                 {/*    <MyToast show = {this.state.show} message = {'User Deleted Successfully.'} type = {'danger'}/>*/}
                 {/*</div>*/}
                 <Card className={"border border-dark bg-dark text-white"}>
-                    <Card.Header><FontAwesomeIcon icon={faList}/> Book List</Card.Header>
+                    <Card.Header><FontAwesomeIcon icon={faList}/> User Data</Card.Header>
                     <Card.Body>
                         <Table bordered hover striped variant="dark">
                             <thead>
@@ -64,7 +64,7 @@ export default class UserData extends Component {
                             <tbody>
                             {this.state.usersData.length === 0 ?
                                 <tr align="center">
-                                    <td colSpan="6"> Books Available.</td>
+                                    <td colSpan="6"> No Data Available.</td>
                                 </tr>
                                 :
                                 this.state.usersData.map((user) => (

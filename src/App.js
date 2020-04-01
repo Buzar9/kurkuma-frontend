@@ -5,10 +5,8 @@ import NavigationBar from './components/NavigationBar';
 import Welcome from "./components/Welcome";
 import Footer from './components/Footer';
 import Book from "./components/Book";
-import BookList from "./components/BookList";
-import UserList from "./components/UserList";
+import UsersList from "./components/UsersList";
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
-import ListUsers from "./components/ListUsers";
 import UserData from "./components/UserData";
 
 export default function App() {
@@ -30,10 +28,8 @@ export default function App() {
                         <Route path="/" exact component={() => <Welcome heading={heading} quote={quote} footer={footer} />} />/>}/>
                         <Route path="/add" exact component={Book}/>
                         <Route path="/edit/:userId" exact component={Book}/>
-                        <Route path="/list" exact component={BookList}/>
-                        <Route path="/users" exact component={UserList}/>
-                        <Route path="/listusers" exact component={ListUsers}/>
-                        <Route path="/userdata" exact component={UserData}/>
+                        <Route path="/userslist" exact component={UsersList}/>
+                        <Route path="/usersdata" exact component={UserData}/>
                     </Switch>
                 </Col>
             </Row>

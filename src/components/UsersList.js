@@ -1,12 +1,12 @@
 import React, {Component} from 'react';
 import {ButtonGroup, Button, Card, Image, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEdit, faList, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {faAddressCard, faEdit, faList, faServer, faTrash} from "@fortawesome/free-solid-svg-icons";
 import axios from 'axios';
 import MyToast from "./MyToast";
 import {Link} from "react-router-dom";
 
-export default class BookList extends Component {
+export default class UsersList extends Component {
 
     constructor (props){
         super(props);
@@ -50,7 +50,7 @@ export default class BookList extends Component {
                     <MyToast show = {this.state.show} message = {'User Deleted Successfully.'} type = {'danger'}/>
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
-                    <Card.Header><FontAwesomeIcon icon={faList}/> Book List</Card.Header>
+                    <Card.Header><FontAwesomeIcon icon={faList}/> User List</Card.Header>
                     <Card.Body>
                         <Table bordered hover striped variant="dark">
                             <thead>
@@ -65,7 +65,7 @@ export default class BookList extends Component {
                             <tbody>
                             {this.state.users.length === 0 ?
                                 <tr align="center">
-                                    <td colSpan="6"> Books Available.</td>
+                                    <td colSpan="6"> No User Available.</td>
                                 </tr>
                                 :
                                 this.state.users.map((user) => (
@@ -78,7 +78,7 @@ export default class BookList extends Component {
                                         {/*<td>{user.password}</td>*/}
                                         <td>{user.roles}</td>
                                         <td>
-{/* todo dodać tutaj przycisk do przekierowania do DATA */}
+                                            <Link to={"userdata/"+user.userId} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faAddressCard}/></Link>
                                         </td>
                                         <td>
                                             <ButtonGroup>

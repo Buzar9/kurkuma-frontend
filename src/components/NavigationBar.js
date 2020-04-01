@@ -9,14 +9,12 @@ export default function NavigationBar() {
     return (
         <Navbar bg="dark" variant="dark">
             <Link to={"/"} className="navbar-brand">
-            {/*    Ewentualne zrodlo i rozmiar ikonki/ obrazka/ zdjecia - prowadzące na stronę startowa */}
                 <FontAwesomeIcon icon={faHome} />
             </Link>
             <Nav className="mr-auto">
                 <Link to={"/add"} className="nav-link">Add Book </Link>
-                <Link to={"/list"} className="nav-link">Book List </Link>
-                <Link to={"/listusers"} className="nav-link">List Users </Link>
-                <Link to={"/userdata"} className="nav-link">Users Data </Link>
+                <Link to={"/userslist"} className="nav-link">Users </Link>
+                <Link to={"/usersdata"} className="nav-link">Users Data </Link>
             </Nav>
         </Navbar>
     );
