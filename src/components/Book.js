@@ -77,18 +77,48 @@ export default class Book extends Component {
             roles: this.state.roles
         };
 
-        axios.post("http://localhost:8080/users", user)
-            .then(response => {
-                if(response.data != null) {
-                    this.setState({'show':true, 'method':'post'});
-                    setTimeout(() => this.setState({'show':false}), 3000);
-                } else {
-                    this.setState({'show':false});
-                }
-            });
+        const headers = new Headers();
+        headers.append('Content-Type', 'application/json')
 
+        fetch("http://localhost:8080/users", {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers
+        })
+        .then(response => response.json())
+        .then((user) =>  {
+            if(user != null) {
+                this.setState({'show':true, 'method':'post'});
+                setTimeout(() => this.setState({'show':false}), 3000);
+            } else {
+                this.setState({'show':false});
+            }
+        });
         this.setState(this.initialState);
     };
+
+    // submitBook = event => {
+    //     event.preventDefault();
+    //
+    //     const user = {
+    //         username: this.state.username,
+    //         password: this.state.password,
+    //         enabled: this.state.enabled,
+    //         roles: this.state.roles
+    //     };
+    //
+    //     axios.post("http://localhost:8080/users", user)
+    //         .then(response => {
+    //             if(response.data != null) {
+    //                 this.setState({'show':true, 'method':'post'});
+    //                 setTimeout(() => this.setState({'show':false}), 3000);
+    //             } else {
+    //                 this.setState({'show':false});
+    //             }
+    //         });
+    //
+    //     this.setState(this.initialState);
+    // };
 
     updateBook = event => {
         event.preventDefault();
@@ -114,6 +144,31 @@ export default class Book extends Component {
 
         this.setState(this.initialState);
     };
+
+    // updateBook = event => {
+    //     event.preventDefault();
+    //
+    //     const user = {
+    //         userId: this.state.userId,
+    //         username: this.state.username,
+    //         password: this.state.password,
+    //         enabled: this.state.enabled,
+    //         roles: this.state.roles
+    //     };
+    //
+    //     axios.put("http://localhost:8080/users/" + user.userId, user)
+    //         .then(response => {
+    //             if(response.data != null) {
+    //                 this.setState({'show':true, 'method':'put'});
+    //                 setTimeout(() => this.setState({'show':false}), 3000);
+    //                 setTimeout(() => this.bookList(), 2000);
+    //             } else {
+    //                 this.setState({'show':false});
+    //             }
+    //         });
+    //
+    //     this.setState(this.initialState);
+    // };
 
     bookChange= event => {
         this.setState({
