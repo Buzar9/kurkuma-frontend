@@ -12,9 +12,7 @@ export default function NavigationBar() {
                 <FontAwesomeIcon icon={faHome} />
             </Link>
             <Nav className="mr-auto">
-                <Link to={"/add"} className="nav-link">Add Book </Link>
-                <Link to={"/userslist"} className="nav-link">Users </Link>
-                <Link to={"/usersdata"} className="nav-link">Users Data </Link>
+                <Link to={"/achievements"} className="nav-link">Achievements </Link>
             </Nav>
         </Navbar>
     );
