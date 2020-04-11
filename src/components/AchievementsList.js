@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Table} from "react-bootstrap";
 import axios from 'axios';
+import {Link} from "react-router-dom";
 
 export default class AchievementsList extends Component {
 
@@ -45,7 +46,9 @@ export default class AchievementsList extends Component {
                             this.state.achs.map((ach) => (
                                 <tr key={ach.achievementId}>
                                     <td>{ach.achievementId}</td>
-                                    <td>{ach.title}</td>
+                                    <td>
+                                        <Link to={'achievement/' + ach.achievementId}>{ach.title}</Link>
+                                    </td>
                                 </tr>
                             ))
                             }

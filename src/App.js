@@ -7,6 +7,7 @@ import Footer from './components/Footer';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
 import AchievementsList from "./components/AchievementsList";
+import Achievement from "./components/Achievement";
 
 export default function App() {
     const marginTop = {
@@ -25,7 +26,8 @@ export default function App() {
                 <Col lg={12} style={marginTop}>
                     <Switch>
                         <Route path="/" exact component={() => <Welcome heading={heading} quote={quote} footer={footer} />} />/>}/>
-                        <Route path="/achievements" exact component={AchievementsList}/>
+                        <Route path="/achievementsList" exact component={AchievementsList}/>
+                        <Route path="/achievement/:achievementId" exact component={Achievement}/>/>
                     </Switch>
                 </Col>
             </Row>
