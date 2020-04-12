@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import {Card, Table} from "react-bootstrap";
 import axios from 'axios';
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faCheck, faHourglassHalf} from "@fortawesome/free-solid-svg-icons";
 
 export default class AchievementsList extends Component {
 
@@ -33,8 +35,9 @@ export default class AchievementsList extends Component {
                         <Table bordered hover striped variant="dark">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th>Level</th>
                                     <th>Title</th>
+                                    <th>Done/ At Work</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -45,10 +48,11 @@ export default class AchievementsList extends Component {
                             :
                             this.state.achs.map((ach) => (
                                 <tr key={ach.achievementId}>
-                                    <td>{ach.achievementId}</td>
+                                    <td>Stars</td>
                                     <td>
                                         <Link to={'achievement/' + ach.achievementId}>{ach.title}</Link>
                                     </td>
+                                    <td><FontAwesomeIcon icon={faCheck}/>{' '}<FontAwesomeIcon icon={faHourglassHalf}/> </td>
                                 </tr>
                             ))
                             }
