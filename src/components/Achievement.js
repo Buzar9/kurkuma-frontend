@@ -3,6 +3,7 @@ import axios from "axios";
 import {Card, Form, Button, Col, Table, ButtonGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCheck, faEdit, faEye, faFile, faPen, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 export default class Achievement extends Component {
 
@@ -42,7 +43,7 @@ export default class Achievement extends Component {
     };
 
     render() {
-        const {achievementId, title} = this.state;
+        const {title} = this.state;
 
         return (
             <div>
@@ -71,7 +72,7 @@ export default class Achievement extends Component {
                                     <td>{quest.job}</td>
                                     <td>
                                         <ButtonGroup>
-                                            <Button size='sm'><FontAwesomeIcon icon={faPen}/>{' '} </Button>
+                                            <Link to={"/realization"} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faPen}/>{' '}</Link>
                                             <Button sieza='sm'><FontAwesomeIcon icon={faFile}/>{' '}</Button>
                                             <Button size='sm'><FontAwesomeIcon icon={faEye}/></Button>
                                         </ButtonGroup>
