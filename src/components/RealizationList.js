@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from "axios";
-import {Card, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faEdit, faFile, faTrash} from "@fortawesome/free-solid-svg-icons";
 
 export default class RealizationList extends Component {
 
@@ -33,6 +35,17 @@ export default class RealizationList extends Component {
             });
     };
 
+    deleteRealization = (realizationId) => {
+        axios.delete('http://localhost:8080/realizations/' + realizationId)
+            .then(response => {
+                if(response.data != null) {
+                    this.setState({
+                        reals: this.state.reals.filter(realization => realization.realizationId !== realizationId)
+                    })
+                }
+            })
+    }
+
     render() {
         const {description} = this.state;
 
@@ -56,7 +69,12 @@ export default class RealizationList extends Component {
                                 :
                                 this.state.reals.map((real) => (
                                     <tr key={real.realizationId}>
-                                        <td> </td>
+                                        <td>
+                                            <ButtonGroup>
+                                                <Button size="sm" variant="outline-danger" onClick={this.deleteRealization.bind(this, real.realizationId)}><FontAwesomeIcon icon={faTrash}/></Button>
+                                                <Button size='sm'><FontAwesomeIcon icon={faEdit}/></Button>
+                                            </ButtonGroup>
+                                        </td>
                                         <td>{real.description}</td>
                                     </tr>
                                 ))
