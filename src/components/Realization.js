@@ -9,6 +9,7 @@ export default class Realization extends Component {
     constructor(props) {
         super(props)
         this.state = this.initialState;
+        this.submitRealization = this.submitRealization.bind(this)
     }
 
     initialState = {
@@ -38,20 +39,38 @@ export default class Realization extends Component {
         });
     };
 
+    submitRealization = event => {
+        event.preventDefault();
+
+        const realization = {
+            description: this.state.description
+        };
+
+//      TODO: HARDCODE USER ID AND QUEST ID !!! CHANGE IT!
+        axios.post('http://localhost:8080/realizations/user2/quest2', realization);
+        this.setState(this.initialState);
+    };
+
+    realizationChange= event => {
+        this.setState({
+            [event.target.name]:event.target.value
+        });
+    }
+
     render() {
-        const {description} = this.state;
+        // const {description} = this.state;
 
         return (
             <Card className={"border border-dark bg-dark text-white"}>
                 <Card.Header><FontAwesomeIcon icon={faEdit}/>Add Realization</Card.Header>
-                <Form>
+                <Form onSubmit={this.submitRealization} id='realizationFormId'>
                     <Card.Body>
                         <Form.Row>
                             <Form.Group as={Col} controlId='formGrindDescription'>
                                 <Form.Label> Description </Form.Label>
-                                <Form.Control required autoComplete='off'
+                                <Form.Control required autoComplete='on'
                                              type="text" name='description'
-                                             value={description} onChange={this.realizationChange}
+                                             value={this.state.description} onChange={this.realizationChange}
                                              className={'bg-dark text-white'}
                                              placeholder='How did you accomplish the task?'/>
                             </Form.Group>
@@ -61,9 +80,9 @@ export default class Realization extends Component {
                         <Button size="sm" variant="success" type="submit">
                             <FontAwesomeIcon icon={faSave}/> {this.state.userId ? "Update" : "Save"}
                         </Button>{" "}
-                        <Button size="sm" variant="info" type="reset">
-                            <FontAwesomeIcon icon={faUndo}/> Reset
-                        </Button>{" "}
+                        {/*<Button size="sm" variant="info" type="reset">*/}
+                        {/*    <FontAwesomeIcon icon={faUndo}/> Reset*/}
+                        {/*</Button>{" "}*/}
                         {/*<Button size="sm" variant="info" type="button" onClick= {this.bookList.bind()}>*/}
                         {/*    <FontAwesomeIcon icon={faList} /> Book List*/}
                         {/*</Button>*/}
