@@ -15,9 +15,9 @@ export default function App() {
         marginTop:"20px"
     }
 
-    const heading = "Welcome to Book Shop";
+    const heading = "Achievements Game";
     const quote = "Madry cytat ... "
-    const footer = "Mark Twain"
+    const footer = "Madry człowiek"
 
   return (
     <Router>
