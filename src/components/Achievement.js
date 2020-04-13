@@ -9,7 +9,6 @@ export default class Achievement extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = this.initialState;
         this.state.show = false;
         // this.achChange = this.achChange.bind(this);
@@ -48,7 +47,9 @@ export default class Achievement extends Component {
         return (
             <div>
                 <Card className={"border border-dark bg-dark text-white"}>
-                    <Card.Header>{title}{' '} <Link className='btn btn-sm btn-outline-primary'><FontAwesomeIcon icon={faFireAlt}/></Link></Card.Header>
+                    <Card.Header>{title}{' '}
+                    <Link className='btn btn-sm btn-outline-primary'><FontAwesomeIcon icon={faFireAlt}/></Link>
+                    </Card.Header>
                     <Card.Body>
                         <Table bordered hover striped variant='dark'>
                             <thead>
@@ -74,7 +75,7 @@ export default class Achievement extends Component {
                                         <ButtonGroup>
                                             <Link to={"/realization"} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faPen}/>{' '}</Link>
                                             <Button size='sm'><FontAwesomeIcon icon={faFile}/>{' '}</Button>
-                                            <Button size='sm'><FontAwesomeIcon icon={faEye}/></Button>
+                                            <Link to={'/realizationList/' + quest.questId} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEye}/></Link>
                                         </ButtonGroup>
                                     </td>
 
