@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Form, Button, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEdit, faFile, faList, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
+import {faArrowLeft, faEdit, faFile, faList, faPlusSquare, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import MyToast from "./MyToast";
 
@@ -71,6 +71,29 @@ export default class Realization extends Component {
         this.setState(this.initialState);
     };
 
+    updateRealization = event => {
+        event.preventDefault();
+
+        const realization = {
+            realizationId: this.state.realizationId,
+            description: this.state.description,
+            questId: this.state.questId,
+            userId: this.state.userId,
+            achievementId: this.state.achievementId
+        };
+
+        axios.put('http://localhost:8080/realizations/' + realization.realizationId + '/user' + realization.userId + '/quest' + realization.questId, realization)
+            .then(response => {
+                if(response.data != null) {
+                    this.setState({'show': true, 'method':'put'});
+                    setTimeout(()=> this.setState({'show':false}), 3000);
+                } else {
+                    this.setState({'show':false});
+                }
+            });
+        this.setState(this.initialState)
+    };
+
     realizationChange= event => {
         this.setState({
             [event.target.name]:event.target.value
@@ -79,8 +102,8 @@ export default class Realization extends Component {
 
 //  TODO: ADD HISTORY BACK
     achievementBack = (achievementId) => {
-    return this.props.history.push('/achievement/:achievementId');
-    //     axios.get('http://localhost8080/achievements' + achievementId);
+    // return this.props.history.push('/achievement/' + achievementId);
+        axios.get('http://localhost8080/achievements' + achievementId);
     }
 
     render() {
@@ -92,8 +115,8 @@ export default class Realization extends Component {
                     <MyToast show={this.state.show} message = {this.state.method === 'put' ? 'Realization Updated Successfully' : 'Realization Saved Successfully'} type={'success'}/>
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
-                    <Card.Header><FontAwesomeIcon icon={faEdit}/>Add Realization</Card.Header>
-                    <Form onReset={this.resetRealization} onSubmit={this.submitRealization} id='realizationFormId'>
+                    <Card.Header><FontAwesomeIcon icon={this.state.realizationId ? faEdit : faPlusSquare}/>{this.state.realizationId ? ' Update' : ' Add'} Realization</Card.Header>
+                    <Form onReset={this.resetRealization} onSubmit={this.state.realizationId ? this.updateRealization : this.submitRealization} id='realizationFormId'>
                         <Card.Body>
                             <Form.Row>
                                 <Form.Group as={Col} controlId='formGrindDescription'>
@@ -108,7 +131,7 @@ export default class Realization extends Component {
                         </Card.Body>
                         <Card.Footer style={{"textAlign": "right"}}>
                             <Button size="sm" variant="success" type="submit">
-                                <FontAwesomeIcon icon={faSave}/> {this.state.userId ? "Update" : "Save"}
+                                <FontAwesomeIcon icon={faSave}/> {this.state.realizationId ? "Update" : "Save"}
                             </Button>{" "}
                             <Button size='sm'><FontAwesomeIcon icon={faFile}/> File
                             </Button>{" "}
