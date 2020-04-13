@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import {Card, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faHourglassHalf} from "@fortawesome/free-solid-svg-icons";
+import {faBahai, faCheck, faCodeBranch, faCrown, faFireAlt, faHourglassHalf, faList, faStarOfLife} from "@fortawesome/free-solid-svg-icons";
 
 export default class AchievementsList extends Component {
 
@@ -28,12 +28,15 @@ export default class AchievementsList extends Component {
 
     render() {
 
-        const oneS = 'g';
-
         return (
             <div>
                 <Card className={"border border-dark bg-dark text-white"}>
-                    <Card.Header>Header</Card.Header>
+                    <Card.Header>Achievements {'   '}
+                        <ButtonGroup>
+                            <Button size='sm'><FontAwesomeIcon icon={faList}/></Button>
+                            <Button size= 'sm'><FontAwesomeIcon icon={faCodeBranch}/></Button>
+                        </ButtonGroup>
+                    </Card.Header>
                     <Card.Body>
                         <Table bordered hover striped variant="dark">
                             <thead>
@@ -51,11 +54,16 @@ export default class AchievementsList extends Component {
                             :
                             this.state.achs.map((ach) => (
                                 <tr key={ach.achievementId}>
-                                    <td>{ach.level}</td>
+                                    <td>{ach.level}<FontAwesomeIcon icon={faStarOfLife}/></td>
                                     <td>
                                         <Link to={'achievement/' + ach.achievementId}>{ach.title}</Link>
                                     </td>
-                                    <td>Open Button => Progress Bar</td>
+                                    <td>
+                                        <Button size='sm'><FontAwesomeIcon icon={faFireAlt}/></Button> /
+                                        <FontAwesomeIcon icon={faHourglassHalf}/> / 
+                                        <FontAwesomeIcon icon={faCrown}/>
+                                         + Progress Bar
+                                    </td>
                                 </tr>
                             ))
                             }
