@@ -3,7 +3,7 @@ import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faBahai, faCheck, faCodeBranch, faCrown, faFireAlt, faHourglassHalf, faList, faStarOfLife} from "@fortawesome/free-solid-svg-icons";
+import {faCodeBranch, faCrown, faFireAlt, faHourglassHalf, faList, faStarOfLife} from "@fortawesome/free-solid-svg-icons";
 
 export default class AchievementsList extends Component {
 
@@ -49,7 +49,7 @@ export default class AchievementsList extends Component {
                             <tbody>
                             {this.state.achs.length === 0 ?
                                 <tr align="center">
-                                    <td colsSpan = '6'> No Achievements Available. </td>
+                                    <td colSpan = '6'> No Achievements Available. </td>
                                 </tr>
                             :
                             this.state.achs.map((ach) => (
