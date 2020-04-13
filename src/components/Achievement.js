@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {Card, Form, Button, Col, Table, ButtonGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faEdit, faEye, faFile, faPen, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faEdit, faEye, faFile, faHourglassHalf, faPen, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
 export default class Achievement extends Component {
@@ -67,7 +67,7 @@ export default class Achievement extends Component {
                             :
                             this.state.questList.map((quest) => (
                                 <tr key={quest.questId}>
-                                    <td><FontAwesomeIcon icon={faCheck}/>{' '} <FontAwesomeIcon icon={faTimes}/></td>
+                                    <td><FontAwesomeIcon icon={faCheck}/>{' '} <FontAwesomeIcon icon={faTimes}/>{' '} <FontAwesomeIcon icon={faHourglassHalf}/></td>
                                     <td>{quest.description}</td>
                                     <td>{quest.job}</td>
                                     <td>
