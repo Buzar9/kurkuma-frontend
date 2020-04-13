@@ -3,6 +3,7 @@ import axios from "axios";
 import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faFile, faTrash} from "@fortawesome/free-solid-svg-icons";
+import {Link} from "react-router-dom";
 
 export default class RealizationList extends Component {
 
@@ -72,7 +73,7 @@ export default class RealizationList extends Component {
                                         <td>
                                             <ButtonGroup>
                                                 <Button size="sm" variant="outline-danger" onClick={this.deleteRealization.bind(this, real.realizationId)}><FontAwesomeIcon icon={faTrash}/></Button>
-                                                <Button size='sm'><FontAwesomeIcon icon={faEdit}/></Button>
+                                                <Link to={"/edit/" + real.realizationId} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEdit}/></Link>
                                             </ButtonGroup>
                                         </td>
                                         <td>{real.description}</td>
