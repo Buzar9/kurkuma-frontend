@@ -39,6 +39,10 @@ export default class Realization extends Component {
         });
     };
 
+    resetRealization = () => {
+        this.setState(() => this.initialState);
+    };
+
     submitRealization = event => {
         event.preventDefault();
 
@@ -58,19 +62,19 @@ export default class Realization extends Component {
     }
 
     render() {
-        // const {description} = this.state;
+        const {description} = this.state;
 
         return (
             <Card className={"border border-dark bg-dark text-white"}>
                 <Card.Header><FontAwesomeIcon icon={faEdit}/>Add Realization</Card.Header>
-                <Form onSubmit={this.submitRealization} id='realizationFormId'>
+                <Form onReset={this.resetRealization} onSubmit={this.submitRealization} id='realizationFormId'>
                     <Card.Body>
                         <Form.Row>
                             <Form.Group as={Col} controlId='formGrindDescription'>
                                 <Form.Label> Description </Form.Label>
                                 <Form.Control required autoComplete='on'
                                              type="text" name='description'
-                                             value={this.state.description} onChange={this.realizationChange}
+                                             value={description} onChange={this.realizationChange}
                                              className={'bg-dark text-white'}
                                              placeholder='How did you accomplish the task?'/>
                             </Form.Group>
@@ -80,9 +84,9 @@ export default class Realization extends Component {
                         <Button size="sm" variant="success" type="submit">
                             <FontAwesomeIcon icon={faSave}/> {this.state.userId ? "Update" : "Save"}
                         </Button>{" "}
-                        {/*<Button size="sm" variant="info" type="reset">*/}
-                        {/*    <FontAwesomeIcon icon={faUndo}/> Reset*/}
-                        {/*</Button>{" "}*/}
+                        <Button size="sm" variant="info" type="reset">
+                            <FontAwesomeIcon icon={faUndo}/> Reset
+                        </Button>{" "}
                         {/*<Button size="sm" variant="info" type="button" onClick= {this.bookList.bind()}>*/}
                         {/*    <FontAwesomeIcon icon={faList} /> Book List*/}
                         {/*</Button>*/}
