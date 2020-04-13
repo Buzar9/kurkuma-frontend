@@ -27,6 +27,9 @@ export default class AchievementsList extends Component {
     };
 
     render() {
+
+        const oneS = 'g';
+
         return (
             <div>
                 <Card className={"border border-dark bg-dark text-white"}>
@@ -48,11 +51,11 @@ export default class AchievementsList extends Component {
                             :
                             this.state.achs.map((ach) => (
                                 <tr key={ach.achievementId}>
-                                    <td>Stars</td>
+                                    <td>{ach.level}</td>
                                     <td>
                                         <Link to={'achievement/' + ach.achievementId}>{ach.title}</Link>
                                     </td>
-                                    <td><FontAwesomeIcon icon={faCheck}/>{' '}<FontAwesomeIcon icon={faHourglassHalf}/> </td>
+                                    <td>Open Button => Progress Bar</td>
                                 </tr>
                             ))
                             }
