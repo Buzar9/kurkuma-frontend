@@ -21,9 +21,13 @@ export default class Realization extends Component {
 
     componentDidMount() {
         const realizationId = +this.props.match.params.realizationId;
+        // const achievementId = +this.props.match.params.achievementId;
         if (realizationId) {
             this.findRealizationById(realizationId)
         }
+        // if (achievementId) {
+        //     this.achievementBack(achievementId)
+        // }
     }
 
     findRealizationById = (realizationId) => {
@@ -74,8 +78,9 @@ export default class Realization extends Component {
     }
 
 //  TODO: ADD HISTORY BACK
-    achievementBack = () => {
-        return this.props.history.push('/achievement/:achievementId')
+    achievementBack = (achievementId) => {
+    return this.props.history.push('/achievement/:achievementId');
+    //     axios.get('http://localhost8080/achievements' + achievementId);
     }
 
     render() {
