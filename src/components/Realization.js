@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {Card, Form, Button, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
-import {faEdit, faList, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
+import {faEdit, faFile, faList, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
 import MyToast from "./MyToast";
 
@@ -109,6 +109,8 @@ export default class Realization extends Component {
                         <Card.Footer style={{"textAlign": "right"}}>
                             <Button size="sm" variant="success" type="submit">
                                 <FontAwesomeIcon icon={faSave}/> {this.state.userId ? "Update" : "Save"}
+                            </Button>{" "}
+                            <Button size='sm'><FontAwesomeIcon icon={faFile}/> File
                             </Button>{" "}
                             <Button size="sm" variant="info" type="reset">
                                 <FontAwesomeIcon icon={faUndo}/> Reset
