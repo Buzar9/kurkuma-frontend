@@ -25,7 +25,7 @@ export default class Achievement extends Component {
         if(achievementId) {
             this.findAchievementById(achievementId)
         }
-    }
+    };
 
     findAchievementById = (achievementId) => {
         axios.get('http://localhost:8080/achievements/' + achievementId)
