@@ -31,6 +31,7 @@ export default function App() {
                         <Route path="/achievementsList" exact component={AchievementsList}/>
                         <Route path="/achievement/:achievementId" exact component={Achievement}/>
                         <Route path='/realization' exact component={Realization}/>
+                        <Route path='/edit/:realizationId' exact component={Realization}/>
                         <Route path='/realizationList/:questId' exact component={RealizationList}/>/>
                     </Switch>
                 </Col>
