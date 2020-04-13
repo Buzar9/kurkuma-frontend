@@ -9,6 +9,7 @@ import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 import AchievementsList from "./components/AchievementsList";
 import Achievement from "./components/Achievement";
 import Realization from "./components/Realization";
+import RealizationList from "./components/RealizationList";
 
 export default function App() {
     const marginTop = {
@@ -30,6 +31,7 @@ export default function App() {
                         <Route path="/achievementsList" exact component={AchievementsList}/>
                         <Route path="/achievement/:achievementId" exact component={Achievement}/>
                         <Route path='/realization' exact component={Realization}/>
+                        <Route path='/realizationList/:questId' exact component={RealizationList}/>/>
                     </Switch>
                 </Col>
             </Row>
