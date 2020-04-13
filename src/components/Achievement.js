@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {Card, Form, Button, Col, Table, ButtonGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faEdit, faEye, faFile, faHourglassHalf, faPen, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faEdit, faEye, faFile, faFireAlt, faHourglassHalf, faPen, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
 export default class Achievement extends Component {
@@ -48,7 +48,7 @@ export default class Achievement extends Component {
         return (
             <div>
                 <Card className={"border border-dark bg-dark text-white"}>
-                    <Card.Header>{title}</Card.Header>
+                    <Card.Header>{title}{' '} <Link className='btn btn-sm btn-outline-primary'><FontAwesomeIcon icon={faFireAlt}/></Link></Card.Header>
                     <Card.Body>
                         <Table bordered hover striped variant='dark'>
                             <thead>
@@ -67,13 +67,13 @@ export default class Achievement extends Component {
                             :
                             this.state.questList.map((quest) => (
                                 <tr key={quest.questId}>
-                                    <td><FontAwesomeIcon icon={faCheck}/>{' '} <FontAwesomeIcon icon={faTimes}/>{' '} <FontAwesomeIcon icon={faHourglassHalf}/></td>
+                                    <td><FontAwesomeIcon icon={faCheck}/> / <FontAwesomeIcon icon={faTimes}/> / <FontAwesomeIcon icon={faHourglassHalf}/></td>
                                     <td>{quest.description}</td>
                                     <td>{quest.job}</td>
                                     <td>
                                         <ButtonGroup>
                                             <Link to={"/realization"} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faPen}/>{' '}</Link>
-                                            <Button sieza='sm'><FontAwesomeIcon icon={faFile}/>{' '}</Button>
+                                            <Button size='sm'><FontAwesomeIcon icon={faFile}/>{' '}</Button>
                                             <Button size='sm'><FontAwesomeIcon icon={faEye}/></Button>
                                         </ButtonGroup>
                                     </td>
