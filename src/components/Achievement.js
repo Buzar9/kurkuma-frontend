@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from "axios";
 import {Card, Form, Button, Col, Table, ButtonGroup} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {faCheck, faEdit, faEye, faFile, faFireAlt, faHourglassHalf, faPen, faTimes} from "@fortawesome/free-solid-svg-icons";
+import {faCheck, faEdit, faEye, faFile, faFireAlt, faHourglassHalf, faPen, faPlus, faTimes} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
 
 export default class Achievement extends Component {
@@ -51,13 +51,16 @@ export default class Achievement extends Component {
                     <Link className='btn btn-sm btn-outline-primary'><FontAwesomeIcon icon={faFireAlt}/></Link>
                     </Card.Header>
                     <Card.Body>
+                        <Card.Text>Zachęcacz z książeczki sprawności, wystarczy go tu wstrzyknąć.
+                            Musi być dużo krótszy, ten napis będzie widoczny za każdym razem.
+                        </Card.Text>
                         <Table bordered hover striped variant='dark'>
                             <thead>
                                 <tr>
                                     <th>Approved?</th>
                                     <th>Description</th>
                                     <th>Job</th>
-                                    <th>Actions</th>
+                                    <th>Realization</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -73,8 +76,7 @@ export default class Achievement extends Component {
                                     <td>{quest.job}</td>
                                     <td>
                                         <ButtonGroup>
-                                            <Link to={"/realization"} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faPen}/>{' '}</Link>
-                                            <Button size='sm'><FontAwesomeIcon icon={faFile}/>{' '}</Button>
+                                            <Link to={"/realization"} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faPlus}/>{' '}</Link>
                                             <Link to={'/realizationList/' + quest.questId} className="btn btn-sm btn-outline-primary"><FontAwesomeIcon icon={faEye}/></Link>
                                         </ButtonGroup>
                                     </td>
