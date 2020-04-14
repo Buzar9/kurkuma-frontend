@@ -77,12 +77,9 @@ export default class Realization extends Component {
         const realization = {
             realizationId: this.state.realizationId,
             description: this.state.description,
-            questId: this.state.questId,
-            userId: this.state.userId,
-            achievementId: this.state.achievementId
         };
 
-        axios.put('http://localhost:8080/realizations/' + realization.realizationId + '/user' + realization.userId + '/quest' + realization.questId, realization)
+        axios.put('http://localhost:8080/realizations/' + this.state.realizationId + '/user' + this.state.userId.userId + '/quest' + this.state.questId, realization)
             .then(response => {
                 if(response.data != null) {
                     this.setState({'show': true, 'method':'put'});
@@ -125,7 +122,9 @@ export default class Realization extends Component {
                                                  type="text" name='description'
                                                  value={description} onChange={this.realizationChange}
                                                  className={'bg-dark text-white'}
-                                                 placeholder='How did you accomplish the task?'/>
+                                                 placeholder={this.state.userId.userId}
+                                                  /*{'How did you do the task?'}*/
+                                    />
                                 </Form.Group>
                             </Form.Row>
                         </Card.Body>
