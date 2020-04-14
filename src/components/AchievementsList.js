@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
+import {Button, ButtonGroup, Card, ProgressBar, Table} from "react-bootstrap";
 import axios from 'axios';
 import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
@@ -59,10 +59,10 @@ export default class AchievementsList extends Component {
                                         <Link to={'achievement/' + ach.achievementId}>{ach.title}</Link>
                                     </td>
                                     <td>
-                                        <Button size='sm'><FontAwesomeIcon icon={faFireAlt}/></Button> /
+                                        <Link className='btn btn-sm btn-outline-primary'><FontAwesomeIcon icon={faFireAlt}/></Link> /
                                         <FontAwesomeIcon icon={faHourglassHalf}/> / 
                                         <FontAwesomeIcon icon={faCrown}/>
-                                         + Progress Bar
+                                        <ProgressBar variant='warning' now={51}/>
                                     </td>
                                 </tr>
                             ))
