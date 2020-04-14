@@ -51,8 +51,7 @@ export default class Achievement extends Component {
                     <Link className='btn btn-sm btn-outline-primary'><FontAwesomeIcon icon={faFireAlt}/></Link>
                     </Card.Header>
                     <Card.Body>
-                        <Card.Text>Zachęcacz z książeczki sprawności, wystarczy go tu wstrzyknąć.
-                            Musi być dużo krótszy, ten napis będzie widoczny za każdym razem.
+                        <Card.Text>Rozwijany zachęcacz z książeczki sprawności, wystarczy go tu wstrzyknąć.
                         </Card.Text>
                         <Table bordered hover striped variant='dark'>
                             <thead>
