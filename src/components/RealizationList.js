@@ -4,6 +4,7 @@ import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faFile, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
+import MyToast from "./MyToast";
 
 export default class RealizationList extends Component {
 
@@ -40,18 +41,25 @@ export default class RealizationList extends Component {
         axios.delete('http://localhost:8080/realizations/' + realizationId)
             .then(response => {
                 if(response.data != null) {
+                    this.setState({'show':true});
+                    setTimeout(() => this.setState({'show':false}), 3000);
                     this.setState({
                         reals: this.state.reals.filter(realization => realization.realizationId !== realizationId)
-                    })
+                    });
+                } else {
+                    this.setState({'show':false});
                 }
-            })
-    }
+            });
+    };
 
     render() {
         const {description} = this.state;
 
         return (
             <div>
+                <div style={{'display':this.state.show ? 'block':'none'}}>
+                    <MyToast show = {this.state.show} message={'Realization Deleted Successfully'} type = {'danger'}/>
+                </div>
                 <Card className={"border border-dark bg-dark text-white"}>
                     <Card.Header> Realizations </Card.Header>
                     <Card.Body>
