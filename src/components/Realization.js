@@ -58,7 +58,8 @@ export default class Realization extends Component {
         };
 
 //      TODO: HARDCODE USER ID AND QUEST ID !!! CHANGE IT!
-        axios.post('http://localhost:8080/realizations/user2/quest2', realization)
+//         axios.post('http://localhost:8080/realizations/user' + this.state.userId.userId + '/quest' + this.state.questId, realization)
+           axios.post('http://localhost:8080/realizations/user2/quest2', realization)
             .then(response => {
                 if(response.data != null) {
                     this.setState({'show':true, 'method':'post'});
@@ -122,7 +123,7 @@ export default class Realization extends Component {
                                                  type="text" name='description'
                                                  value={description} onChange={this.realizationChange}
                                                  className={'bg-dark text-white'}
-                                                 placeholder={this.state.userId.userId}
+                                                 placeholder={this.state.achievementId}
                                                   /*{'How did you do the task?'}*/
                                     />
                                 </Form.Group>
