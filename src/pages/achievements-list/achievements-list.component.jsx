@@ -5,7 +5,7 @@ import {Link} from "react-router-dom";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faCodeBranch, faCrown, faFireAlt, faHourglassHalf, faList, faStarOfLife} from "@fortawesome/free-solid-svg-icons";
 
-export default class AchievementsListComponent extends Component {
+export default class AchievementsList extends Component {
 
     constructor(props) {
         super(props);

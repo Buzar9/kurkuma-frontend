@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
 import {Container, Row, Col} from 'react-bootstrap';
-import NavibarComponent from './components/navibar/navibar.component';
-import HomepageComponent from "./pages/homepage/homepage.component";
-import FooterComponent from './components/footer/footer.component';
+import Navibar from './components/navibar/navibar.component';
+import Homepage from "./pages/homepage/homepage.component";
+import Footer from './components/footer/footer.component';
 import {BrowserRouter as Router, Switch, Route} from 'react-router-dom';
 
-import AchievementsListComponent from "./pages/achievements-list/achievements-list.component";
-import AchievementActionComponent from "./components/achievement-action/achievement-action.component";
-import RealizationActionComponent from "./components/realization-action/realization-action.component";
-import RealizationListComponent from "./pages/realization-list/realization-list.component";
+import AchievementsList from "./pages/achievements-list/achievements-list.component";
+import AchievementAction from "./components/achievement-action/achievement.action";
+import RealizationAction from "./components/realization-action/realization-action.component";
+import RealizationList from "./pages/realization-list/realization-list.component";
 
 export default function App() {
     const marginTop = {
@@ -22,22 +22,22 @@ export default function App() {
 
   return (
     <Router>
-        <NavibarComponent />
+        <Navibar />
         <Container>
             <Row>
                 <Col lg={12} style={marginTop}>
                     <Switch>
-                        <Route path="/" exact component={() => <HomepageComponent heading={heading} quote={quote} footer={footer} />} />/>}/>
-                        <Route path="/achievementsList" exact component={AchievementsListComponent}/>
-                        <Route path="/achievement/:achievementId" exact component={AchievementActionComponent}/>
-                        <Route path='/realization' exact component={RealizationActionComponent}/>
-                        <Route path='/edit/:realizationId' exact component={RealizationActionComponent}/>
-                        <Route path='/realizationList/:questId' exact component={RealizationListComponent}/>/>
+                        <Route path="/" exact component={() => <Homepage heading={heading} quote={quote} footer={footer} />} />/>}/>
+                        <Route path="/achievementsList" exact component={AchievementsList}/>
+                        <Route path="/achievement/:achievementId" exact component={AchievementAction}/>
+                        <Route path='/realization' exact component={RealizationAction}/>
+                        <Route path='/edit/:realizationId' exact component={RealizationAction}/>
+                        <Route path='/realizationList/:questId' exact component={RealizationList}/>/>
                     </Switch>
                 </Col>
             </Row>
         </Container>
-        <FooterComponent/>
+        <Footer/>
     </Router>
   );
 }

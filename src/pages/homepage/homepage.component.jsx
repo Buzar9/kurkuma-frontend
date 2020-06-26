@@ -1,7 +1,7 @@
 import React from 'react';
 import {Jumbotron} from "react-bootstrap";
 
-export default function HomepageComponent(props) {
+export default function Homepage(props) {
         return (
             <Jumbotron className="bg-dark text-white">
                 <h1>{props.heading}</h1>
