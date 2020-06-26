@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import {Container, Col} from "react-bootstrap";
 import {Navbar} from 'react-bootstrap';
 
-export default class Footer extends Component {
+export default class FooterComponent extends Component {
     render() {
         let fullYear = new Date().getFullYear();
 
