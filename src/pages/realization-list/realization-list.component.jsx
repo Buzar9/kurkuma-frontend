@@ -4,9 +4,9 @@ import {Button, ButtonGroup, Card, Table} from "react-bootstrap";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faEdit, faFile, faTrash} from "@fortawesome/free-solid-svg-icons";
 import {Link} from "react-router-dom";
-import MyToast from "./MyToast";
+import ToastComponent from "../../components/toast/toast.component";
 
-export default class RealizationList extends Component {
+export default class RealizationListComponent extends Component {
 
     constructor(props) {
         super(props);
@@ -58,7 +58,7 @@ export default class RealizationList extends Component {
         return (
             <div>
                 <div style={{'display':this.state.show ? 'block':'none'}}>
-                    <MyToast show = {this.state.show} message={'Realization Deleted Successfully'} type = {'danger'}/>
+                    <ToastComponent show = {this.state.show} message={'RealizationActionComponent Deleted Successfully'} type = {'danger'}/>
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
                     <Card.Header> Realizations </Card.Header>
