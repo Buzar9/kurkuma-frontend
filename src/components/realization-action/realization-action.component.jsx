@@ -3,9 +3,9 @@ import {Card, Form, Button, Col} from "react-bootstrap";
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faArrowLeft, faEdit, faFile, faList, faPlusSquare, faSave, faUndo} from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
-import MyToast from "./MyToast";
+import ToastComponent from "../toast/toast.component";
 
-export default class Realization extends Component {
+export default class RealizationActionComponent extends Component {
 
     constructor(props) {
         super(props)
@@ -110,7 +110,7 @@ export default class Realization extends Component {
         return (
             <div>
                 <div style={{'display':this.state.show ? 'block' : 'none'}}>
-                    <MyToast show={this.state.show} message = {this.state.method === 'put' ? 'Realization Updated Successfully' : 'Realization Saved Successfully'} type={'success'}/>
+                    <ToastComponent show={this.state.show} message = {this.state.method === 'put' ? 'RealizationActionComponent Updated Successfully' : 'RealizationActionComponent Saved Successfully'} type={'success'}/>
                 </div>
                 <Card className={"border border-dark bg-dark text-white"}>
                     <Card.Header><FontAwesomeIcon icon={this.state.realizationId ? faEdit : faPlusSquare}/>{this.state.realizationId ? ' Update' : ' Add'} Realization</Card.Header>
