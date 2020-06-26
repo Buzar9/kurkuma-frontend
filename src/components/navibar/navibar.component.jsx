@@ -5,7 +5,7 @@ import {faHome} from "@fortawesome/free-solid-svg-icons";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 
 
-export default function NavigationBar() {
+export default function NavibarComponent() {
     return (
         <Navbar bg="dark" variant="dark">
             <Link to={"/"} className="navbar-brand">
